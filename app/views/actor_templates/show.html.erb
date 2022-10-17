@@ -1,5 +1,5 @@
 <h1>
-  Actor #<%= @the_actor.id %> details
+  <%= @the_actor.name_with_dob%>
 </h1>
 
 <a href="/actors">
@@ -83,23 +83,24 @@
   <% matching_characters = Character.where({ :actor_id => a_id }) %>
 
   <% matching_characters.each do |a_character| %>
+
     <% m_id = a_character.movie_id %>
 
     <% matching_movies = Movie.where({ :id => m_id }) %>
 
-    <% the_movie = matching_movies.at(0) %>
+    <% a_movie = matching_movies.at(0) %>
 
     <tr>
       <td>
-        <%= the_movie.title %>
+        <%= a_movie.title %>
       </td>
 
       <td>
-        <%= the_movie.year %>
+        <%= a_movie.year %>
       </td>
 
       <td>
-        <% d_id = the_movie.director_id %>
+        <% d_id = a_movie.director_id %>
         
         <% matching_directors = Director.where({ :id => d_id }) %>
         
@@ -113,7 +114,7 @@
       </td>
 
       <td>
-        <a href="/movies/<%= the_movie.id %>">
+        <a href="/movies/<%= a_movie.id %>">
           Show details
         </a>
       </td>
